@@ -3,18 +3,16 @@
 // 	protoc-gen-go v1.36.11
 // 	protoc        v4.25.9
 // source: payment.proto
-// REGENERATED
 
 package paymentpb
 
 import (
-	reflect "reflect"
-	sync "sync"
-	unsafe "unsafe"
-
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
+	reflect "reflect"
+	sync "sync"
+	unsafe "unsafe"
 )
 
 const (
@@ -152,6 +150,94 @@ func (x *PaymentResponse) GetProcessedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+type ListPaymentsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Status        string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListPaymentsRequest) Reset() {
+	*x = ListPaymentsRequest{}
+	mi := &file_payment_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListPaymentsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListPaymentsRequest) ProtoMessage() {}
+
+func (x *ListPaymentsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_payment_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListPaymentsRequest.ProtoReflect.Descriptor instead.
+func (*ListPaymentsRequest) Descriptor() ([]byte, []int) {
+	return file_payment_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ListPaymentsRequest) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+type ListPaymentsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Payments      []*PaymentResponse     `protobuf:"bytes,1,rep,name=payments,proto3" json:"payments,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListPaymentsResponse) Reset() {
+	*x = ListPaymentsResponse{}
+	mi := &file_payment_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListPaymentsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListPaymentsResponse) ProtoMessage() {}
+
+func (x *ListPaymentsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_payment_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListPaymentsResponse.ProtoReflect.Descriptor instead.
+func (*ListPaymentsResponse) Descriptor() ([]byte, []int) {
+	return file_payment_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ListPaymentsResponse) GetPayments() []*PaymentResponse {
+	if x != nil {
+		return x.Payments
+	}
+	return nil
+}
+
 var File_payment_proto protoreflect.FileDescriptor
 
 const file_payment_proto_rawDesc = "" +
@@ -165,9 +251,14 @@ const file_payment_proto_rawDesc = "" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12%\n" +
 	"\x0etransaction_id\x18\x02 \x01(\tR\rtransactionId\x12\x18\n" +
 	"\amessage\x18\x03 \x01(\tR\amessage\x12=\n" +
-	"\fprocessed_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vprocessedAt2U\n" +
+	"\fprocessed_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vprocessedAt\"-\n" +
+	"\x13ListPaymentsRequest\x12\x16\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"L\n" +
+	"\x14ListPaymentsResponse\x124\n" +
+	"\bpayments\x18\x01 \x03(\v2\x18.payment.PaymentResponseR\bpayments2\xa2\x01\n" +
 	"\x0ePaymentService\x12C\n" +
-	"\x0eProcessPayment\x12\x17.payment.PaymentRequest\x1a\x18.payment.PaymentResponseB>Z<github.com/nalrematvonesah/ap2-generated/paymentpb;paymentpbb\x06proto3"
+	"\x0eProcessPayment\x12\x17.payment.PaymentRequest\x1a\x18.payment.PaymentResponse\x12K\n" +
+	"\fListPayments\x12\x1c.payment.ListPaymentsRequest\x1a\x1d.payment.ListPaymentsResponseB>Z<github.com/nalrematvonesah/ap2-generated/paymentpb;paymentpbb\x06proto3"
 
 var (
 	file_payment_proto_rawDescOnce sync.Once
@@ -181,21 +272,26 @@ func file_payment_proto_rawDescGZIP() []byte {
 	return file_payment_proto_rawDescData
 }
 
-var file_payment_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_payment_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_payment_proto_goTypes = []any{
 	(*PaymentRequest)(nil),        // 0: payment.PaymentRequest
 	(*PaymentResponse)(nil),       // 1: payment.PaymentResponse
-	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
+	(*ListPaymentsRequest)(nil),   // 2: payment.ListPaymentsRequest
+	(*ListPaymentsResponse)(nil),  // 3: payment.ListPaymentsResponse
+	(*timestamppb.Timestamp)(nil), // 4: google.protobuf.Timestamp
 }
 var file_payment_proto_depIdxs = []int32{
-	2, // 0: payment.PaymentResponse.processed_at:type_name -> google.protobuf.Timestamp
-	0, // 1: payment.PaymentService.ProcessPayment:input_type -> payment.PaymentRequest
-	1, // 2: payment.PaymentService.ProcessPayment:output_type -> payment.PaymentResponse
-	2, // [2:3] is the sub-list for method output_type
-	1, // [1:2] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	4, // 0: payment.PaymentResponse.processed_at:type_name -> google.protobuf.Timestamp
+	1, // 1: payment.ListPaymentsResponse.payments:type_name -> payment.PaymentResponse
+	0, // 2: payment.PaymentService.ProcessPayment:input_type -> payment.PaymentRequest
+	2, // 3: payment.PaymentService.ListPayments:input_type -> payment.ListPaymentsRequest
+	1, // 4: payment.PaymentService.ProcessPayment:output_type -> payment.PaymentResponse
+	3, // 5: payment.PaymentService.ListPayments:output_type -> payment.ListPaymentsResponse
+	4, // [4:6] is the sub-list for method output_type
+	2, // [2:4] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_payment_proto_init() }
@@ -209,7 +305,7 @@ func file_payment_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_payment_proto_rawDesc), len(file_payment_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
