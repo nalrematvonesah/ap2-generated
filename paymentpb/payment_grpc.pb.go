@@ -3,11 +3,13 @@
 // - protoc-gen-go-grpc v1.6.1
 // - protoc             v4.25.9
 // source: payment.proto
+// REGENERATED
 
 package paymentpb
 
 import (
 	context "context"
+
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
